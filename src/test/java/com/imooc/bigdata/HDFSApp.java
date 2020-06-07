@@ -83,7 +83,8 @@ public class HDFSApp {
      */
     @Test
     public void text() throws Exception {
-        FSDataInputStream in = fileSystem.open(new Path("/cdh_version.properties"));
+        //FSDataInputStream in = fileSystem.open(new Path("/cdh_version.properties"));
+        FSDataInputStream in = fileSystem.open(new Path("/hdfsapi/output/wc.out"));
         IOUtils.copyBytes(in, System.out, 1024);
     }
 
@@ -118,8 +119,8 @@ public class HDFSApp {
      */
     @Test
     public void create() throws Exception {
-        FSDataOutputStream out = fileSystem.create(new Path("/hdfsapi/test/b.txt"));
-        out.writeUTF("hello world");
+        FSDataOutputStream out = fileSystem.create(new Path("/hdfsapi/test/h.txt"));
+        out.write(("World World world hello Hello world").getBytes());
         out.flush();
         out.close();
     }
